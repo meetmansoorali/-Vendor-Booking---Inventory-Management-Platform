@@ -23,7 +23,17 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+// A Vendor has many inventory items
+public function inventories()
+{
+    return $this->hasMany(Inventory::class);
+}
 
+// A Customer has many bookings
+public function bookings()
+{
+    return $this->hasMany(Booking::class, 'customer_id');
+}
     /**
      * The attributes that should be hidden for serialization.
      *
